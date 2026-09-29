@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json.schemastore.org/package",
+  "name": "elixirmedics-backend",
+  "version": "1.1.0",
+  "private": true,
+  "description": "Secure member auth and search API for Elixir Medics.",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test test/*.test.js",
+    "lint": "node --check server.js && node --check src/**/*.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.4.1",
+    "helmet": "^7.1.0",
+    "joi": "^17.13.1",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.12.0",
+    "swagger-jsdoc": "^6.0.0",
+    "swagger-ui-express": "^5.0.0",
+    "uuid": "^10.0.0"
+  }
+}

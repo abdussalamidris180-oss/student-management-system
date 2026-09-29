@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elixirs Medics</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="logo">
+        <h2>ELIXIRS MEDICS</h2>
+        <small> </small>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#members">Members</a></li>
+            <li><a href="#executives">Executive</a></li>
+            <li><a href="#committees">Committees</a></li>
+            <li><a href="#resources">Resources</a></li>
+            <li><a href="#constitution">Constitution</a></li>
+            <li><a href="#announcements">Announcements</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="auth-buttons">
+        <button id="loginBtn">Login</button>
+        <button id="signupBtn">Sign Up</button>
+        <button id="adminBtn">Admin</button>
+    </div>
+</header>
+
+<!-- HERO -->
+<section id="home" class="hero">
+    <div class="overlay">
+        <h1>WELCOME TO ELIXIR MEDICS</h1>
+
+        <h3>
+            Leadership Through Service,
+            Excellence Through Unity
+        </h3>
+
+        <p>
+            A community dedicated to academic excellence,
+            leadership development, welfare support,
+            and professional growth among medical students.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#executives">View Executives</a>
+            <a href="#resources">Resources</a>
+            <a href="#announcements">Announcements</a>
+        </div>
+    </div>
+</section>
+
+<!-- QUICK ACCESS -->
+<section class="cards">
+
+    <div class="card">
+        <i class="fas fa-users"></i>
+        <h3>Class Members</h3>
+        <p>View members directory.</p>
+    </div>
+
+    <div class="card">
+        <i class="fas fa-building"></i>
+        <h3>Committees</h3>
+        <p>Explore committees.</p>
+    </div>
+
+    <div class="card">
+        <i class="fas fa-book"></i>
+        <h3>Resources</h3>
+        <p>Study materials.</p>
+    </div>
+
+    <div class="card">
+        <i class="fas fa-bullhorn"></i>
+        <h3>Announcements</h3>
+        <p>Latest news and updates.</p>
+    </div>
+
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+    <h2>About Elixir Medics</h2>
+
+    <p>
+        Elixir Medics is a student-led medical association
+        committed to academic excellence, leadership,
+        welfare support and professional development.
+    </p>
+</section>
+
+<!-- EXECUTIVES -->
+<section id="executives">
+
+    <h2>Executive Committee</h2>
+
+    <div class="executive-grid">
+        <!-- Executives will appear here once added by admin -->
+    </div>
+
+</section>
+
+<!-- MEMBERS -->
+<section id="members">
+
+<h2>Registered Members</h2>
+
+<div class="member-grid">
+    <p class="empty-state">No registered members yet. Members will appear here after signup.</p>
+</div>
+
+</section>
+
+<!-- COMMITTEES -->
+<section id="committees">
+
+<h2>Committees</h2>
+
+<div class="committee-grid">
+
+<div class="committee-card">
+<h3>Elders Committee</h3>
+<p>Guidance and advisory responsibilities.</p>
+</div>
+
+<div class="committee-card">
+<h3>Financial Committee</h3>
+<p>Budget and accountability.</p>
+</div>
+
+<div class="committee-card">
+<h3>Welfare Committee</h3>
+<p>Student welfare and support.</p>
+</div>
+
+<div class="committee-card">
+<h3>Disciplinary Committee</h3>
+<p>Discipline and ethics.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- RESOURCES -->
+<section id="resources">
+
+<h2>Academic Resources</h2>
+
+<div class="resource-tabs">
+
+<button class="tab active">Anatomy</button>
+<button class="tab">Physiology</button>
+<button class="tab">Biochemistry</button>
+<button class="tab">Pharmacology</button>
+
+</div>
+
+<div class="resource-content">
+
+<h3>Anatomy Resources</h3>
+
+<ul>
+<li>Lecture Notes</li>
+<li>Past Questions</li>
+<li>Recommended Textbooks</li>
+</ul>
+
+</div>
+
+</section>
+
+<!-- CONSTITUTION -->
+<section id="constitution">
+
+<h2>Constitution</h2>
+
+<p>
+View and download the association constitution.
+</p>
+
+<button>Download Constitution</button>
+
+</section>
+
+<!-- ANNOUNCEMENTS -->
+<section id="announcements">
+
+<h2>Latest Announcements</h2>
+
+<div class="announcement-card">
+<h3>General Meeting</h3>
+<p>Announcement will be added manually.</p>
+</div>
+
+<div class="announcement-card">
+<h3>Academic Update</h3>
+<p>Announcement will be added manually.</p>
+</div>
+
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+
+<h2>Contact Us</h2>
+
+<form>
+
+<input type="text"
+placeholder="Full Name">
+
+<input type="email"
+placeholder="Email Address">
+
+<input type="text"
+placeholder="Subject">
+
+<textarea
+placeholder="Message">
+</textarea>
+
+<button type="submit">
+Send Message
+</button>
+
+</form>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+<h3>ELIXIR MEDICS</h3>
+
+<p>
+Leadership Through Service,
+Excellence Through Unity
+</p>
+
+<div class="socials">
+
+<i class="fab fa-facebook"></i>
+<i class="fab fa-twitter"></i>
+<i class="fab fa-instagram"></i>
+<i class="fab fa-whatsapp"></i>
+
+</div>
+
+</footer>
+
+<!-- LOGIN MODAL -->
+<div class="modal" id="loginModal">
+
+<div class="modal-content">
+
+<span class="close">&times;</span>
+
+<h2>Login</h2>
+
+<form id="loginForm">
+
+<input type="email" id="loginEmail" placeholder="Email">
+
+<input type="password" id="loginPassword" placeholder="Password">
+
+<button type="submit">
+Login
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+<!-- REGISTER MODAL -->
+<div class="modal" id="signupModal">
+
+<div class="modal-content">
+
+<span class="close">&times;</span>
+
+<h2>Register</h2>
+
+<form id="signupForm">
+
+<input type="text" id="memberName" placeholder="Full Name">
+
+<input type="email" id="memberEmail" placeholder="Email">
+
+<input type="text" id="memberDepartment" placeholder="Department">
+
+<input type="number" id="memberYear" placeholder="Year (e.g. 400)" min="1" max="700">
+
+<input type="password" id="memberPassword" placeholder="Password">
+
+<input type="password" id="memberConfirmPassword" placeholder="Confirm Password">
+
+<button type="submit">
+Register
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+<!-- ADMIN LOGIN MODAL -->
+<div class="modal" id="adminModal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="adminModalTitle">Admin Login</h2>
+        <p id="adminModalSubtitle" class="hint">Enter your admin credentials to manage executives and resources.</p>
+        <form id="adminAccountForm">
+            <input type="email" id="adminEmail" placeholder="Admin Email">
+            <input type="password" id="adminPassword" placeholder="Password">
+            <input type="password" id="adminConfirmPassword" placeholder="Confirm Password" class="hidden-field">
+            <button type="submit" id="adminAccountSubmit">Continue</button>
+            <button type="button" id="adminToggleMode" class="secondary-btn link-btn">Create admin account</button>
+        </form>
+    </div>
+</div>
+
+<!-- ADMIN DASHBOARD PANEL -->
+<div class="modal" id="adminPanel">
+    <div class="modal-content admin-dashboard">
+        <span class="close">&times;</span>
+        <div class="dashboard-shell">
+            <aside class="admin-sidebar">
+                <div class="admin-brand">
+                    <h2>Admin Dashboard</h2>
+                    <p class="hint">Manage executives, upload PDF resources, and update photos directly from your device.</p>
+                </div>
+                <nav class="sidebar-nav">
+                    <button class="sidebar-link active" data-panel="add-executive">Add Executive</button>
+                    <button class="sidebar-link" data-panel="manage-executive">Manage Executives</button>
+                    <button class="sidebar-link" data-panel="members">Members</button>
+                    <button class="sidebar-link" data-panel="feedback">Feedback</button>
+                    <button class="sidebar-link" data-panel="announcements">Announcements</button>
+                    <button class="sidebar-link" data-panel="committees">Committees</button>
+                    <button class="sidebar-link" data-panel="constitution">Constitution</button>
+                </nav>
+                <div class="sidebar-summary">
+                    <div class="summary-card sidebar-card">
+                        <h3>Executives</h3>
+                        <p id="executiveCount">0</p>
+                    </div>
+                    <div class="summary-card sidebar-card">
+                        <h3>Resources</h3>
+                        <p id="resourceCount">0</p>
+                    </div>
+                    <div class="summary-card sidebar-card">
+                        <h3>System</h3>
+                        <p id="adminStatus">Secure</p>
+                    </div>
+                </div>
+                <button id="adminLogoutBtn" class="secondary-btn logout-btn">Logout</button>
+            </aside>
+            <main class="admin-main">
+                <div class="admin-main-content">
+                    <div class="admin-tabs">
+                        <button class="admin-tab active" data-panel="add-executive">Add Executive</button>
+                        <button class="admin-tab" data-panel="manage-executive">Manage Executives</button>
+                        <button class="admin-tab" data-panel="upload-resource">Upload Resource</button>
+                        <button class="admin-tab" data-panel="update-photo">Executive Photo</button>
+                        <button class="admin-tab" data-panel="members">Members</button>
+                        <button class="admin-tab" data-panel="feedback">Feedback</button>
+                        <button class="admin-tab" data-panel="announcements">Announcements</button>
+                        <button class="admin-tab" data-panel="committees">Committees</button>
+                        <button class="admin-tab" data-panel="constitution">Constitution</button>
+                    </div>
+                    <div class="admin-panel-content">
+                        <div class="admin-panel active" id="add-executive">
+                            <form id="addExecutiveForm">
+                                <input type="text" id="execName" placeholder="Executive Name">
+                                <input type="text" id="execRole" placeholder="Role (e.g. President)">
+                                <input type="file" id="execImageFile" accept="image/*" aria-label="Executive photo file">
+                                <input type="text" id="execImage" placeholder="Photo URL (optional)">
+                                <textarea id="execDescription" placeholder="Brief description"></textarea>
+                                <button type="submit">Add Executive</button>
+                            </form>
+                        </div>
+                        <div class="admin-panel" id="upload-resource">
+                            <form id="uploadResourceForm">
+                                <select id="resourceSubject" aria-label="Resource subject">
+                                    <option value="Anatomy">Anatomy</option>
+                                    <option value="Physiology">Physiology</option>
+                                    <option value="Biochemistry">Biochemistry</option>
+                                    <option value="Pharmacology">Pharmacology</option>
+                                </select>
+                                <input type="text" id="resourceName" placeholder="Resource Name (optional)">
+                                <input type="file" id="resourceFile" accept="application/pdf" aria-label="Upload resource PDF">
+                                <button type="submit">Upload PDF</button>
+                            </form>
+                        </div>
+                        <div class="admin-panel" id="update-photo">
+                            <form id="updatePhotoForm">
+                                <select id="executivePhotoSelect" aria-label="Executive to update"></select>
+                                <input type="file" id="newExecutivePhotoFile" accept="image/*" aria-label="Upload executive photo from device">
+                                <input type="text" id="newExecutivePhoto" placeholder="New Photo URL (optional)">
+                                <button type="submit">Update Executive Photo</button>
+                            </form>
+                        </div>
+                        <div class="admin-panel" id="manage-executive">
+                            <form id="manageExecutiveForm">
+                                <select id="manageExecutiveSelect" aria-label="Select executive to manage"></select>
+                                <input type="text" id="manageExecName" placeholder="Executive Name">
+                                <input type="text" id="manageExecRole" placeholder="Role">
+                                <textarea id="manageExecDescription" placeholder="Brief description"></textarea>
+                                <input type="file" id="manageExecPhotoFile" accept="image/*" aria-label="Upload executive photo">
+                                <input type="text" id="manageExecPhotoUrl" placeholder="Photo URL (optional)">
+                                <button type="submit">Update Executive</button>
+                                <button type="button" id="deleteExecutiveBtn" class="secondary-btn">Delete Executive</button>
+                            </form>
+                        </div>
+                        <div class="admin-panel" id="members">
+                            <div class="admin-section">
+                                <h3>Registered Members</h3>
+                                <div class="admin-list" id="memberList">
+                                    <p class="empty-state">No members have registered yet.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="admin-panel" id="feedback">
+                            <div class="admin-section">
+                                <h3>User Feedback</h3>
+                                <div class="admin-list" id="feedbackList">
+                                    <p class="empty-state">No feedback submitted yet.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="admin-panel" id="announcements">
+                            <div class="admin-section">
+                                <h3>Publish Announcement</h3>
+                                <form id="announcementForm">
+                                    <input type="text" id="announcementTitle" placeholder="Announcement Title">
+                                    <textarea id="announcementBody" placeholder="Announcement details"></textarea>
+                                    <button type="submit">Publish Announcement</button>
+                                </form>
+                                <div class="admin-list" id="announcementAdminList">
+                                    <p class="empty-state">No announcements yet.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="admin-panel" id="committees">
+                            <div class="admin-section">
+                                <h3>Manage Committees</h3>
+                                <form id="committeeForm">
+                                    <input type="text" id="committeeName" placeholder="Committee Name">
+                                    <textarea id="committeeDescription" placeholder="Committee description"></textarea>
+                                    <button type="submit">Save Committee</button>
+                                </form>
+                                <div class="admin-list" id="committeeAdminList">
+                                    <p class="empty-state">No committees configured yet.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="admin-panel" id="constitution">
+                            <div class="admin-section">
+                                <h3>Constitution</h3>
+                                <textarea id="constitutionText" placeholder="Enter constitution text"></textarea>
+                                <button id="saveConstitutionBtn">Save Constitution</button>
+                                <div class="admin-list" id="constitutionPreview">
+                                    <p class="empty-state">No constitution has been saved yet.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
