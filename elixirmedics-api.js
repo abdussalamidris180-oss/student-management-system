@@ -105,5 +105,9 @@
     bindNewsletterForm: (selector, callbacks) => bindForm(selector, api.subscribe, callbacks)
   };
 
-  global.ElixirMedicsApi = api;
-})(window);
+  if (typeof module !== "undefined" && module.exports) {
+  module.exports = api;
+} else if (typeof window !== "undefined") {
+  window.ElixirMedicsApi = api;
+}
+})();
