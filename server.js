@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.static(__dirname));
 
 // MongoDB Connection
-const MONGO_URI = process.env.MONGO_URI || "mongodb+srv://abdussalamidris180_db_user:<db_password>@cluster0.mksgtaz.mongodb.net/elixirmedics?retryWrites=true&w=majority";
+const MONGO_URI = process.env.MONGO_URI || "mongodb+srv://abdussalamidris180_db_user:<@bb@21#m>@cluster0.mksgtaz.mongodb.net/elixirmedics?retryWrites=true&w=majority";
 
 mongoose
   .connect(MONGO_URI)
@@ -32,14 +32,14 @@ const User = mongoose.model("User", userSchema);
 
 // --- API ROUTES ---
 
-// 1. Register Route (Mambobi)
+// 1. Register Route (Members)
 app.post("/api/register", async (req, res) => {
   try {
     const { fullName, email, department, year, password } = req.body;
 
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      return res.status(400).json({ message: "Wannan Email din an riga an yi amfani da shi." });
+      return res.status(400).json({ message: "This email is already in use." });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -53,9 +53,9 @@ app.post("/api/register", async (req, res) => {
     });
 
     await newUser.save();
-    res.status(201).json({ message: "An yi rajista cikin nasara!" });
+    res.status(201).json({ message: "Registration successful!" });
   } catch (error) {
-    res.status(500).json({ message: "Kuskure ya faru wajen yin rajista.", error: error.message });
+    res.status(500).json({ message: "An error occurred during registration.", error: error.message });
   }
 });
 
@@ -66,7 +66,7 @@ app.post("/api/admin/register", async (req, res) => {
 
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      return res.status(400).json({ message: "Wannan Admin Email din yana nan ma." });
+      return res.status(400).json({ message: "This Admin email already exists." });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -77,9 +77,9 @@ app.post("/api/admin/register", async (req, res) => {
     });
 
     await newAdmin.save();
-    res.status(201).json({ message: "An kirkiri Admin account cikin nasara!" });
+    res.status(201).json({ message: "Admin account created successfully!" });
   } catch (error) {
-    res.status(500).json({ message: "Kuskure wajen kirkirar Admin.", error: error.message });
+    res.status(500).json({ message: "Error creating Admin account.", error: error.message });
   }
 });
 
@@ -90,20 +90,20 @@ app.post("/api/login", async (req, res) => {
 
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).json({ message: "Babu mai wannan Email din." });
+      return res.status(400).json({ message: "User with this email does not exist." });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(400).json({ message: "Password dinka ba daidai ba ne." });
+      return res.status(400).json({ message: "Incorrect password." });
     }
 
     res.json({
-      message: "An shiga cikin nasara!",
+      message: "Login successful!",
       user: { id: user._id, email: user.email, role: user.role, fullName: user.fullName }
     });
   } catch (error) {
-    res.status(500).json({ message: "Kuskure ya faru wajen Login.", error: error.message });
+    res.status(500).json({ message: "An error occurred during login.", error: error.message });
   }
 });
 
