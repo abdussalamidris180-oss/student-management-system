@@ -103,11 +103,15 @@ app.post("/api/register", async (req, res) => {
     const { fullName, email, department, year, password } = req.body;
 
     const existingUser = await User.findOne({ email });
+
     if (existingUser) {
-      return res.status(400).json({ message: "This email is already in use." });
+      return res.status(400).json({
+        message: "This email is already in use."
+      });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
+
     const newUser = new User({
       fullName,
       email,
@@ -119,22 +123,29 @@ app.post("/api/register", async (req, res) => {
 
     await newUser.save();
 
+    const token = createToken(newUser);
 
-const token = createToken(newUser);
+    res.status(201).json({
+      message: "Registration successful!",
+      token,
+      user: {
+        id: newUser._id,
+        email: newUser.email,
+        role: newUser.role,
+        fullName: newUser.fullName,
+        department: newUser.department,
+        year: newUser.year
+      }
+    });
 
-res.status(201).json({
-  message: "Registration successful!",
-  token,
-  user: {
-    id: newUser._id,
-    email: newUser.email,
-    role: newUser.role,
-    fullName: newUser.fullName,
-    department: newUser.department,
-    year: newUser.year
+  } catch (error) {
+    res.status(500).json({
+      message: "Error registering member.",
+      error: error.message
+    });
   }
 });
-});
+
 
 // 2. Create Admin Route
 app.post("/api/admin/register", async (req, res) => {
