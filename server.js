@@ -9,8 +9,12 @@ const app = express();
 app.use(express.json());
 app.use(express.static(__dirname));
 
-// MongoDB Connection
-const MONGO_URI = process.env.MONGO_URI || "mongodb+srv://abdussalamidris180_db_user:<4Jz9jBGRUc491755>@cluster0.mksgtaz.mongodb.net/elixirmedics?retryWrites=true&w=majority";
+const MONGO_URI = process.env.MONGO_URI;
+
+if (!MONGO_URI) {
+  console.error("MONGO_URI is not set.");
+  process.exit(1);
+}
 
 mongoose
   .connect(MONGO_URI)
