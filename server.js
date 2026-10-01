@@ -2,10 +2,25 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 const path = require("path");
+require("dotenv").config();
 
 const app = express();
 
+const JWT_SECRET = process.env.JWT_SECRET;
+
+if (!JWT_SECRET) {
+  console.error("JWT_SECRET is not set.");
+  process.exit(1);
+}
+
+const ADMIN_SETUP_KEY = process.env.ADMIN_SETUP_KEY;
+
+if (!ADMIN_SETUP_KEY) {
+  console.error("ADMIN_SETUP_KEY is not set.");
+  process.exit(1);
+}
 app.use(express.json());
 app.use(express.static(__dirname));
 
@@ -34,6 +49,52 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model("User", userSchema);
 
+function createToken(user) {
+  return jwt.sign(
+    {
+      id: user._id.toString(),
+      email: user.email,
+      role: user.role
+    },
+    JWT_SECRET,
+    {
+      expiresIn: "7d"
+    }
+  );
+}
+function authenticate(req, res, next) {
+  const authHeader = req.headers.authorization;
+
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    return res.status(401).json({
+      message: "Authentication required."
+    });
+  }
+
+  const token = authHeader.split(" ")[1];
+
+  try {
+    const decoded = jwt.verify(token, JWT_SECRET);
+
+    req.user = decoded;
+
+    next();
+  } catch (error) {
+    return res.status(401).json({
+      message: "Invalid or expired token."
+    });
+  }
+}
+
+function requireAdmin(req, res, next) {
+  if (req.user.role !== "admin") {
+    return res.status(403).json({
+      message: "Admin access required."
+    });
+  }
+
+  next();
+}
 // --- API ROUTES ---
 
 // 1. Register Route (Members)
@@ -57,15 +118,35 @@ app.post("/api/register", async (req, res) => {
     });
 
     await newUser.save();
-    res.status(201).json({ message: "Registration successful!" });
-  } catch (error) {
-    res.status(500).json({ message: "An error occurred during registration.", error: error.message });
+
+
+const token = createToken(newUser);
+
+res.status(201).json({
+  message: "Registration successful!",
+  token,
+  user: {
+    id: newUser._id,
+    email: newUser.email,
+    role: newUser.role,
+    fullName: newUser.fullName,
+    department: newUser.department,
+    year: newUser.year
   }
+});
 });
 
 // 2. Create Admin Route
 app.post("/api/admin/register", async (req, res) => {
   try {
+    const setupKey = req.headers["x-admin-setup-key"];
+
+    if (!setupKey || setupKey !== ADMIN_SETUP_KEY) {
+      return res.status(403).json({
+        message: "Admin setup authorization required."
+      });
+    }
+
     const { email, password } = req.body;
 
     const existingUser = await User.findOne({ email });
@@ -102,10 +183,20 @@ app.post("/api/login", async (req, res) => {
       return res.status(400).json({ message: "Incorrect password." });
     }
 
-    res.json({
-      message: "Login successful!",
-      user: { id: user._id, email: user.email, role: user.role, fullName: user.fullName }
-    });
+    const token = createToken(user);
+
+res.json({
+  message: "Login successful!",
+  token,
+  user: {
+    id: user._id,
+    email: user.email,
+    role: user.role,
+    fullName: user.fullName,
+    department: user.department,
+    year: user.year
+  }
+});
   } catch (error) {
     res.status(500).json({ message: "An error occurred during login.", error: error.message });
   }
