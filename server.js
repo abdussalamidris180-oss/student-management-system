@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.static(__dirname));
 
 // MongoDB Connection
-const MONGO_URI = process.env.MONGO_URI || "mongodb+srv://abdussalamidris180_db_user:<@bb@21#m>@cluster0.mksgtaz.mongodb.net/elixirmedics?retryWrites=true&w=majority";
+const MONGO_URI = process.env.MONGO_URI || "mongodb+srv://abdussalamidris180_db_user:<4Jz9jBGRUc491755>@cluster0.mksgtaz.mongodb.net/elixirmedics?retryWrites=true&w=majority";
 
 mongoose
   .connect(MONGO_URI)
